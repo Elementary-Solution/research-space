@@ -1,0 +1,8 @@
+<?php 
+
+$sql = "SELECT * FROM student JOIN WHERE student.sclass = studentclass.cid";
+
+
+
+
+?>

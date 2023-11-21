@@ -1,0 +1,34 @@
+<?php 
+
+include "connection.php";
+
+if(isset($_POST['submit']))
+{
+   
+   $username = $_POST['username'];
+   $email = $_POST['email'];
+   $password = md5($_POST['password']);
+  $cpassword = md5($_POST['cpassword']);
+  
+   if($password == $cpassword){
+    
+   $sql = "SELECT * FROM register WHERE enail = '$email'";
+   $result = mysqli_query($conn,$sql);
+
+   if(!$result->num_rows > 0){
+     $sql = "INSERT INTO register(username,email,password) VALUES ('$username','$email','password')";
+    
+   $result = mysqli_query($conn,$sql);
+   
+   if($result)
+   {
+     echo "<script>alert('Wow! User Registration Completed.')</script>";
+  }else{
+
+     echo "<script>alert('Wow! email already exit.')</script>";
+}
+
+}
+
+
+?>
